@@ -1,6 +1,12 @@
 # RentPlace
 RentPlace is a P2P crowdsourcing-based platform that allows people to rent different products from other people in the community.
 
+## Running RentPlace
+- Connect to MongoDB - need to add your IP address to our MongoDB account in order to connect to the DB.
+- Please contact **Yotam Hazan** in order to establish a new connection.
+- For running the **server** side - in terminal go to **server** folder of the project, run **"npm install"** , then run **"npm start"**.
+- For running the **client** side - in terminal go to **client** folder of the project, run **"npm install"** , then run **"npm start"**.
+
 ## On a personal note
 We worked very hard on this project, and tried to think about different features (big or small) that can make it better in terms of UX/UI and crowdsourcing. Most of them we also implemented, but some were left out due to the deadline. Some of us had a little background in ReactJS, but neither of us had any previous knowledge of backend side with nodejs and mongoDB, which is why our biggest challenge was to deal with the asynchronous nature of working with this framework (and the reason why our code might be a bit different than the best practices (: ).
 We learned a lot, and hope that you could also appreciate the hard work here. Thank you
