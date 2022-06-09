@@ -325,7 +325,7 @@ const getUserPosts = (userId, res) => {
 };
 
 /**
- * getUserPosts
+ * getUserCart
  * the function gets user id and returns the corresponding cart.
  *
  * @param {userId} userId
@@ -348,60 +348,6 @@ const getUserCart = (userId, res) => {
     .catch((err) => {
       return res.status(422).json({ error: err });
     });
-};
-
-/**
- * likePost
- * the function gets user id and updates the post like list
- * by adding the user to the list.
- *
- * @param {userId} userId
- * @param {postId} postId
- * @param {res} res
- */
-const likePost = (userId, postId, res) => {
-  Post.findByIdAndUpdate(
-    postId,
-    {
-      $push: { likes: userId },
-    },
-    {
-      new: true,
-    }
-  ).exec((err, result) => {
-    if (err) {
-      return res.status(422).json({ error: err });
-    } else {
-      res.json(result);
-    }
-  });
-};
-
-/**
- * unlikePost
- * the function gets user id and updates the post like list
- * by removing the user to the list.
- *
- * @param {userId} userId
- * @param {postId} postId
- * @param {res} res
- */
-const unlikePost = (userId, postId, res) => {
-  Post.findByIdAndUpdate(
-    postId,
-    {
-      $pull: { likes: userId },
-    },
-    {
-      new: true,
-    }
-  ).exec((err, result) => {
-    if (err) {
-      return res.status(422).json({ error: err });
-    } else {
-      res.json(result);
-    }
-  });
 };
 
 /**
@@ -450,41 +396,6 @@ const reviewRenter = async (userId, rank, res) => {
 };
 
 /**
- * postComment
- * the function gets user id, post id and the review's score
- * and adding the review to the post's reviews array.
- *
- * @param {userId} userId
- * @param {postId} postId
- * @param {reviewScore} reviewScore
- * @param {res} res
- */
-const postReview = (userId, postId, reviewScore, res) => {
-  const review = {
-    score: reviewScore,
-    postedBy: userId,
-  };
-  Post.findByIdAndUpdate(
-    postId,
-    {
-      $push: { reviews: review },
-    },
-    {
-      new: true,
-    }
-  )
-    .populate("reviews.postedBy", "_id name")
-    .populate("postedBy", "_id name")
-    .exec((err, result) => {
-      if (err) {
-        return res.status(422).json({ error: err });
-      } else {
-        res.json(result);
-      }
-    });
-};
-
-/**
  * deletePost
  * the function gets the user id and post id
  * finds the post by it's id and removing it.
@@ -511,16 +422,6 @@ const deletePost = (userId, postId, res) => {
           });
       }
     });
-};
-
-const initSearch = async (userId, productName) => {
-  const search = new Search({
-    userId: userId,
-    productName: productName,
-  });
-  search.save().then(() => {
-    return search._id;
-  });
 };
 
 /**
@@ -729,11 +630,8 @@ module.exports = {
   mostWanted,
   getUserPosts,
   getUserCart,
-  likePost,
-  unlikePost,
   reviewProduct,
   reviewRenter,
-  postReview,
   deletePost,
   searchPost,
   getRecommendations,
