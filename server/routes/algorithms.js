@@ -61,7 +61,7 @@ const updateRenterReviewScore = async (userId, reviewScore) => {
     numofReviewers = renter.numofReviewers;
     renterId = renter._id;
     totalScore = reviewsScore * numofReviewers;
-    totalScore += reviewScore;
+    totalScore += parseInt(reviewScore);
     numofReviewers += 1;
     reviewsScore = totalScore / numofReviewers;
     return RenterScore.findByIdAndUpdate(renterId, {
@@ -86,7 +86,7 @@ const updateProductReviewScore = async (productId, productRank) => {
     var rank = product.rank;
     var numOfRankers = product.numOfRankers;
     var totalranks = rank * numOfRankers;
-    totalranks += productRank;
+    totalranks += parseInt(productRank);
     numOfRankers += 1;
     rank = totalranks / numOfRankers;
     return Product.findByIdAndUpdate(product._id, {
@@ -157,10 +157,16 @@ const calculatePopularityScore = async (productId) => {
     var searchesRatio = product.searchesRatio;
     var AppearenceRatio = product.AppearenceRatio;
     score = rank * 0.3 + searchesRatio * 0.3 + AppearenceRatio * 0.4;
-    return Product.findByIdAndUpdate(product._id, {
-      popularityScore: score,
-    }).then(() => {
-      return score;
+    return Post.findOne({ productId: productId }).then((post) => {
+      return Post.findByIdAndUpdate(post._id, {
+        popularityScore: score,
+      }).then(() => {
+        return Product.findByIdAndUpdate(product._id, {
+          popularityScore: score,
+        }).then(() => {
+          return score;
+        });
+      });
     });
   });
 };
