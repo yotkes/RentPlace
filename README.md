@@ -14,7 +14,7 @@ We learned a lot, and hope that you could also appreciate the hard work here. Th
 ## Main Features
 ### Registration and login
 - New user can sign up to the website by filling up all his personal details, add a photo and select fields of interests.
-- Existing user can login to hte system by entering email and password
+- Existing user can login to the system by entering email and password
 - User can reset his password
 ### Main Dashboard
 - Recommendations board with all the user's customized recommendations
@@ -38,7 +38,7 @@ We learned a lot, and hope that you could also appreciate the hard work here. Th
 - The user must fill in all details and add a photo
 
 ## DB Objects
-We’ve decided to split the DB objects into  small objects for modularity and to separate between logics (ui/algorithms use). 
+We’ve decided to split the DB objects into  small objects for modularity and to separate between logics (UI/Algorithms use). 
 
 - **Users** - contains all the user data  in the website
 - **Posts** - contains all the data for specific post (client related - e.g. photo, description, etc), each post has a field of productId that relates it to the corresponding product.
