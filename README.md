@@ -8,7 +8,7 @@ RentPlace is a P2P crowdsourcing-based platform that allows people to rent diffe
 - For running the **client** side - in terminal go to **client** folder of the project, run **"npm install"** , then run **"npm start"**.
 
 ## On a personal note
-We worked very hard on this project, and tried to think about different features (big or small) that can make it better in terms of UX/UI and crowdsourcing. Most of them we also implemented, but some were left out due to the deadline. Some of us had a little background in ReactJS, but neither of us had any previous knowledge of backend side with nodejs and mongoDB, which is why our biggest challenge was to deal with the asynchronous nature of working with this framework (and the reason why our code might be a bit different than the best practices (: ).
+We worked very hard on this project, and tried to think about different features (big or small) that can make it better in terms of UX/UI and crowdsourcing. Most of them we also implemented, but some were left out due to the deadline. Our biggest challenge was to deal with the asynchronous nature of working with this framework (and the reason why our code might be a bit different than the best practices (: ).
 We learned a lot, and hope that you could also appreciate the hard work here. Thank you
 
 ## Main Features
